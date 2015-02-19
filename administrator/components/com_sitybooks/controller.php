@@ -22,9 +22,16 @@ class SitybooksController extends JControllerLegacy {
      * @since	1.5
      */
     public function display($cachable = false, $urlparams = false) {
-        require_once JPATH_COMPONENT . '/helpers/sitybooks.php';
 
         $view = JFactory::getApplication()->input->getCmd('view', 'categorys');
+        if(file_exists(JPATH_COMPONENT . '/helpers/'.$view.'.php')){
+            require_once JPATH_COMPONENT . '/helpers/'.$view.'.php';
+        } else {
+            require_once JPATH_COMPONENT . '/helpers/categorys.php';
+        }
+
+//        var_dump($view);
+//        die();
         JFactory::getApplication()->input->set('view', $view);
 
         parent::display($cachable, $urlparams);

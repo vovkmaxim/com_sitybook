@@ -48,7 +48,7 @@ class SitybooksViewCategorys extends JViewLegacy {
      * @since	1.6
      */
     protected function addToolbar() {
-        require_once JPATH_COMPONENT . '/helpers/sitybooks.php';
+        require_once JPATH_COMPONENT . '/helpers/categorys.php';
 
         $state = $this->get('State');
         $canDo = SitybooksHelper::getActions($state->get('filter.category_id'));
@@ -107,7 +107,7 @@ class SitybooksViewCategorys extends JViewLegacy {
         JHtmlSidebar::setAction('index.php?option=com_sitybooks&view=categorys');
 
         $this->extra_sidebar = '';
-        
+
 		JHtmlSidebar::addFilter(
 
 			JText::_('JOPTION_SELECT_PUBLISHED'),

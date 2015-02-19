@@ -22,7 +22,7 @@ $document->addStyleSheet('components/com_sitybooks/assets/css/sitybooks.css');
 <script type="text/javascript">
     js = jQuery.noConflict();
     js(document).ready(function() {
-        
+
     });
 
     Joomla.submitbutton = function(task)
@@ -31,9 +31,9 @@ $document->addStyleSheet('components/com_sitybooks/assets/css/sitybooks.css');
             Joomla.submitform(task, document.getElementById('category-form'));
         }
         else {
-            
+
             if (task != 'category.cancel' && document.formvalidator.isValid(document.id('category-form'))) {
-                
+
                 Joomla.submitform(task, document.getElementById('category-form'));
             }
             else {
@@ -62,7 +62,7 @@ $document->addStyleSheet('components/com_sitybooks/assets/css/sitybooks.css');
 				<?php if(empty($this->item->created_by)){ ?>
 					<input type="hidden" name="jform[created_by]" value="<?php echo JFactory::getUser()->id; ?>" />
 
-				<?php } 
+				<?php }
 				else{ ?>
 					<input type="hidden" name="jform[created_by]" value="<?php echo $this->item->created_by; ?>" />
 
@@ -88,7 +88,7 @@ $document->addStyleSheet('components/com_sitybooks/assets/css/sitybooks.css');
             </div>
         </div>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
-        
+
         <?php if (JFactory::getUser()->authorise('core.admin','sitybooks')) : ?>
 	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('JGLOBAL_ACTION_PERMISSIONS_LABEL', true)); ?>
 		<?php echo $this->form->getInput('rules'); ?>

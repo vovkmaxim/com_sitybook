@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+
+              <field name="id" type="text" default="0" label="COM_SITYBOOKS_FORM_LBL_BOOK_ID"
+            readonly="true" class="readonly"
+            description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="created_by" type="createdby" default="" 
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_CREATED_BY"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_CREATED_BY"  /> 
+
+       <field name="name" type="text"
+                
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_NAME"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_NAME" 
+                
+                
+                 required="true" 
+            class="SB_name_book"
+            size="255"
+            maxlength="255" /> 
+
+       <field name="author" type="text"
+                
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_AUTHOR"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_AUTHOR" 
+                
+                
+                 required="true" 
+            class="SB_author_book"
+            size="255"
+            maxlength="255" /> 
+
+       <field name="date" type="calendar" class="inputbox"
+        
+        
+         default="0000-00-00" 
+        
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_DATE"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_DATE" 
+        filter="safehtml" /> 
+
+       <field name="country" type="text"
+                
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_COUNTRY"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_COUNTRY" 
+                
+                
+                
+            class="BS_country_book"
+            size="255"
+            maxlength="255" /> 
+
+       <field name="language" type="text"
+                
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_LANGUAGE"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_LANGUAGE" 
+                
+                
+                
+            class="BS_language_book"
+            size="255"
+            maxlength="255" /> 
+
+       <field name="description" type="textarea"
+                
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_DESCRIPTION"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_DESCRIPTION" 
+                
+                
+                
+            menu_published="0"
+            cols="40"
+            rows="100"
+            filter="raw"
+            option_on="Yes"
+            option_off="Yes" /> 
+
+       <field name="price" type="text"
+                
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_PRICE"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_PRICE" 
+                 default="0.0" 
+                
+                 required="true" 
+            class="BS_price_book"
+            filter="float"
+            size="255"
+            maxlength="255" /> 
+
+       <field name="special_price" type="text"
+                
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_SPECIAL_PRICE"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_SPECIAL_PRICE" 
+                 default="0.0" 
+                
+                
+            class="BS_special_price_book"
+            filter="float"
+            size="255"
+            maxlength="255" /> 
+
+       <field name="amount_book" type="text"
+                
+            label="COM_SITYBOOKS_FORM_LBL_BOOK_AMOUNT_BOOK"
+            description="COM_SITYBOOKS_FORM_DESC_BOOK_AMOUNT_BOOK" 
+                 default="0" 
+                
+                 required="true" 
+            class="BS_amount_book"
+            filter="int"
+            size="20"
+            maxlength="20" /> 
+
+         <field
+        name="state"
+        type="list"
+        label="JSTATUS"
+        description="JFIELD_PUBLISHED_DESC"
+        class="inputbox"
+        size="1"
+        default="1">
+        <option value="1">JPUBLISHED</option>
+        <option value="0">JUNPUBLISHED</option>
+        <option value="2">JARCHIVED</option>
+        <option value="-2">JTRASHED</option>
+    </field> 
+
+                        <field name="checked_out" type="hidden" filter="unset" />
+        <field name="checked_out_time" type="hidden" filter="unset" /> 
+
+ </fieldset> 
+
+ <fieldset 
+                        name="accesscontrol">
+                       <field name="asset_id" type="hidden" filter="unset" />
+                       <field name="rules"
+                            type="rules"
+                            label="JFIELD_RULES_LABEL"
+                            translate_label="false"
+                            filter="rules"
+                            validate="rules"
+                            class="inputbox"
+                            component="com_sitybooks"
+                            section="book"
+                        />
+
+	</fieldset>
+
+</form>
