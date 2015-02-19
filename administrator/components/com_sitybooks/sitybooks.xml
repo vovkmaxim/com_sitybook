@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+    <name>com_sitybooks</name>
+    <creationDate>2015-02-19</creationDate>
+    <copyright>© 2015. Все права защищены.</copyright>
+    <license>GNU General Public License версии 2 или более поздней; Смотрите LICENSE.txt</license>
+    <author>Maxim</author>
+    <authorEmail>mvovk90@mail.ru</authorEmail>
+    <authorUrl>http://</authorUrl>
+    <version>1.0.0</version>
+    <description>Mini shop for book</description>
+    
+    
+    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>sitybooks.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>assets</folder>
+    </files>
+    <languages folder="languages/site">
+        
+			<language tag="da-DK">da-DK/da-DK.com_sitybooks.ini</language>
+			<language tag="nl-NL">nl-NL/nl-NL.com_sitybooks.ini</language>
+			<language tag="en-AU">en-AU/en-AU.com_sitybooks.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_sitybooks.ini</language>
+			<language tag="en-US">en-US/en-US.com_sitybooks.ini</language>
+			<language tag="fi-FI">fi-FI/fi-FI.com_sitybooks.ini</language>
+			<language tag="it-IT">it-IT/it-IT.com_sitybooks.ini</language>
+			<language tag="pl-PL">pl-PL/pl-PL.com_sitybooks.ini</language>
+			<language tag="pt-PT">pt-PT/pt-PT.com_sitybooks.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.com_sitybooks.ini</language>
+			<language tag="uk-UA">uk-UA/uk-UA.com_sitybooks.ini</language>
+    </languages>
+    <administration>
+        <menu img="components/com_sitybooks/assets/images/s_com_sitybooks.png" >COM_SITYBOOKS</menu>
+        <submenu>
+            
+			<menu link="option=com_sitybooks&amp;view=categorys" view="categorys" img="components/com_sitybooks/assets/images/s_categorys.png" alt="Sitybooks/Categorys">COM_SITYBOOKS_TITLE_CATEGORYS</menu>
+
+        </submenu>
+        <files folder="administrator">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>sitybooks.php</filename>
+            <folder>controllers</folder>
+            <folder>assets</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+        <languages folder="languages/administrator">
+            
+			<language tag="da-DK">da-DK/da-DK.com_sitybooks.ini</language>
+			<language tag="da-DK">da-DK/da-DK.com_sitybooks.sys.ini</language>
+			<language tag="nl-NL">nl-NL/nl-NL.com_sitybooks.ini</language>
+			<language tag="nl-NL">nl-NL/nl-NL.com_sitybooks.sys.ini</language>
+			<language tag="en-AU">en-AU/en-AU.com_sitybooks.ini</language>
+			<language tag="en-AU">en-AU/en-AU.com_sitybooks.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_sitybooks.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_sitybooks.sys.ini</language>
+			<language tag="en-US">en-US/en-US.com_sitybooks.ini</language>
+			<language tag="en-US">en-US/en-US.com_sitybooks.sys.ini</language>
+			<language tag="fi-FI">fi-FI/fi-FI.com_sitybooks.ini</language>
+			<language tag="fi-FI">fi-FI/fi-FI.com_sitybooks.sys.ini</language>
+			<language tag="it-IT">it-IT/it-IT.com_sitybooks.ini</language>
+			<language tag="it-IT">it-IT/it-IT.com_sitybooks.sys.ini</language>
+			<language tag="pl-PL">pl-PL/pl-PL.com_sitybooks.ini</language>
+			<language tag="pl-PL">pl-PL/pl-PL.com_sitybooks.sys.ini</language>
+			<language tag="pt-PT">pt-PT/pt-PT.com_sitybooks.ini</language>
+			<language tag="pt-PT">pt-PT/pt-PT.com_sitybooks.sys.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.com_sitybooks.ini</language>
+			<language tag="ru-RU">ru-RU/ru-RU.com_sitybooks.sys.ini</language>
+			<language tag="uk-UA">uk-UA/uk-UA.com_sitybooks.ini</language>
+			<language tag="uk-UA">uk-UA/uk-UA.com_sitybooks.sys.ini</language>
+        </languages>
+    </administration>
+    <plugins>
+        <plugin group="search" plugin="sitybooks"/>
+    </plugins>
+    
+</extension>
+<!-- Component built by the Joomla Component Creator -->
+<!-- http://www.component-creator.com/ -->
