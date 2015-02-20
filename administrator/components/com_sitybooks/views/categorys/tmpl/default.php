@@ -10,6 +10,9 @@
 // no direct access
 defined('_JEXEC') or die;
 
+//JHtml::script(Juri::base() . 'templates/custom/js/sample.js', $mootools);
+//JHtml::stylesheet(Juri::base() . 'templates/custom/css/style.css');
+
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
@@ -17,19 +20,21 @@ JHtml::_('formbehavior.chosen', 'select');
 
 // Import CSS
 $document = JFactory::getDocument();
-$document->addStyleSheet('components/com_sitybooks/assets/css/sitybooks.css');
 
-$user	= JFactory::getUser();
-$userId	= $user->get('id');
-$listOrder	= $this->state->get('list.ordering');
-$listDirn	= $this->state->get('list.direction');
-$canOrder	= $user->authorise('core.edit.state', 'com_sitybooks');
-$saveOrder	= $listOrder == 'a.ordering';
-if ($saveOrder)
-{
-	$saveOrderingUrl = 'index.php?option=com_sitybooks&task=categorys.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', 'categoryList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
-}
+$document->addStyleSheet('components/com_sitybooks/assets/css/admin_categorys.css');
+$document->addScript('components/com_sitybooks/assets/js/admin_categorys.js');
+$user = JFactory::getUser();
+$userId = $user->get('id');
+//$listOrder = $this->state->get('list.ordering');
+//$listDirn = $this->state->get('list.direction');
+$canOrder = $user->authorise('core.edit.state', 'com_sitybooks');
+$saveOrder = $listOrder == 'a.ordering';
+
+  if ($saveOrder)
+  {
+      $saveOrderingUrl = 'index.php?option=com_sitybooks&task=categorys.saveOrderAjax&tmpl=component';
+      JHtml::_('sortablelist.sortable', 'categoryList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+  }
 $sortFields = $this->getSortFields();
 ?>
 <script type="text/javascript">
@@ -62,7 +67,7 @@ if (!empty($this->extra_sidebar)) {
 <?php else : ?>
 	<div id="j-main-container">
 <?php endif;?>
-    
+
 		<div id="filter-bar" class="btn-toolbar">
 			<div class="filter-search btn-group pull-left">
 				<label for="filter_search" class="element-invisible"><?php echo JText::_('JSEARCH_FILTER');?></label>
@@ -91,9 +96,62 @@ if (!empty($this->extra_sidebar)) {
 					<?php echo JHtml::_('select.options', $sortFields, 'value', 'text', $listOrder);?>
 				</select>
 			</div>
-		</div>        
+		</div>
 		<div class="clearfix"> </div>
-		<table class="table table-striped" id="categoryList">
+
+
+
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th>Row</th>
+      <th>Bill</th>
+      <th>Payment Date</th>
+      <th>Payment Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="active">
+      <td>1</td>
+      <td>Credit Card</td>
+      <td>04/07/2014</td>
+      <td>Call in to confirm</td>
+    </tr>
+    <tr class="success">
+      <td>2</td>
+      <td>Water</td>
+      <td>01/07/2014</td>
+      <td>Paid</td>
+    </tr>
+    <tr class="info">
+      <td>3</td>
+      <td>Internet</td>
+      <td>05/07/2014</td>
+      <td>Change plan</td>
+    </tr>
+    <tr class="warning">
+      <td>4</td>
+      <td>Electricity</td>
+      <td>03/07/2014</td>
+      <td>Pending</td>
+    </tr>
+    <tr class="danger">
+      <td>5</td>
+      <td>Telephone</td>
+      <td>06/07/2014</td>
+      <td>Due</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+<!--		<table class="table table-striped" id="categoryList">
 			<thead>
 				<tr>
                 <?php if (isset($this->items[0]->ordering)): ?>
@@ -109,18 +167,21 @@ if (!empty($this->extra_sidebar)) {
 						<?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 					</th>
                 <?php endif; ?>
-                    
-                    
-                    
+
+
+
                 <?php if (isset($this->items[0]->id)): ?>
 					<th width="1%" class="nowrap center hidden-phone">
 						<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+					</th>
+					<th width="1%" class="nowrap center hidden-phone">
+						<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_NAME', 'a.name', $listDirn, $listOrder); ?>
 					</th>
                 <?php endif; ?>
 				</tr>
 			</thead>
 			<tfoot>
-                <?php 
+                <?php
                 if(isset($this->items[0])){
                     $colspan = count(get_object_vars($this->items[0]));
                 }
@@ -136,14 +197,14 @@ if (!empty($this->extra_sidebar)) {
 			</tfoot>
 			<tbody>
 			<?php foreach ($this->items as $i => $item) :
-				$ordering   = ($listOrder == 'a.ordering');
+                $ordering   = ($listOrder == 'a.ordering');
                 $canCreate	= $user->authorise('core.create',		'com_sitybooks');
                 $canEdit	= $user->authorise('core.edit',			'com_sitybooks');
                 $canCheckin	= $user->authorise('core.manage',		'com_sitybooks');
                 $canChange	= $user->authorise('core.edit.state',	'com_sitybooks');
 				?>
 				<tr class="row<?php echo $i % 2; ?>">
-                    
+
                 <?php if (isset($this->items[0]->ordering)): ?>
 					<td class="order nowrap center hidden-phone">
 					<?php if ($canChange) :
@@ -167,23 +228,23 @@ if (!empty($this->extra_sidebar)) {
 					<td class="hidden-phone">
 						<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 					</td>
-                <?php if (isset($this->items[0]->state)): ?>
+					<?php if (isset($this->items[0]->state)): ?>
 					<td class="center">
 						<?php echo JHtml::_('jgrid.published', $item->state, $i, 'categorys.', $canChange, 'cb'); ?>
 					</td>
                 <?php endif; ?>
-                    
-
-
                 <?php if (isset($this->items[0]->id)): ?>
 					<td class="center hidden-phone">
 						<?php echo (int) $item->id; ?>
 					</td>
                 <?php endif; ?>
+					<td class="center hidden-phone">
+						<?php echo $item->name; ?>
+					</td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>
-		</table>
+		</table>-->
 
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />
@@ -191,6 +252,11 @@ if (!empty($this->extra_sidebar)) {
 		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
 		<?php echo JHtml::_('form.token'); ?>
 	</div>
-</form>        
+</form>
 
-		
+
+
+
+
+
+
